@@ -3,11 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>boardView</title>
 </head>
 <body>
-<h1>BOARD VIEW</h1>
+<br><br>
+<div class="row"> <!-- 그리드 div -->
+	<div class="col-sm-2"> </div>
+	<div class="col-sm-8"> <!-- 중앙그리드 -->
+<h2>BOARD VIEW</h2>
 <%
     if(request.getParameter("boardNo") == null) {
         response.sendRedirect(request.getContextPath()+"/jsp_board/boardList.jsp");
@@ -29,16 +45,16 @@
             resultSet = statement.executeQuery();
             if(resultSet.next()) {
 %>
-                <div>board_no :</div>
-                <div><%=boardNo%></div>
-                <div>board_title :</div>
-                <div><%=resultSet.getString("board_title")%></div>
-                <div>board_content :</div>
-                <div><%=resultSet.getString("board_content")%></div>
-                <div>board_user :</div>
-                <div><%=resultSet.getString("board_user")%></div>
-                <div>board_date :</div>
-                <div><%=resultSet.getString("board_date")%></div>
+                <div class="bg-light text-dark">board_no :</div>
+                <div class="font-italic"><%=boardNo%></div>
+                <div class="bg-light text-dark">board_title :</div>
+                <div class="font-italic"><%=resultSet.getString("board_title")%></div>
+                <div class="bg-light text-dark">board_content :</div>
+                <div class="font-italic"><%=resultSet.getString("board_content")%></div>
+                <div class="bg-light text-dark">board_user :</div>
+                <div class="font-italic"><%=resultSet.getString("board_user")%></div>
+                <div class="bg-light text-dark">board_date :</div>
+                <div class="font-italic"><%=resultSet.getString("board_date")%></div>
                 <div>
                     <a href="<%=request.getContextPath()%>/jsp_board/boardModifyForm.jsp?boardNo=<%=boardNo%>">수정</a>
                     <a href="<%=request.getContextPath()%>/jsp_board/boardRemoveForm.jsp?boardNo=<%=boardNo%>">삭제</a>
@@ -54,5 +70,8 @@
         }
     }
 %>
+</div> <!-- 중앙그리드 -->
+ <div class="col-sm-2"></div>
+</div> <!-- 그리드 /div -->
 </body>
 </html>
