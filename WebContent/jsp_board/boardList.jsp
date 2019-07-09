@@ -3,11 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>BOARD LIST</title>
 </head>
 <body>
-<h1>BOARD LIST</h1>
+<div class = "container"><!-- table을 감싸는 div -->
+<br><br>
+<h2>BOARD LIST</h2>    
 <%
     // boardList.jsp페이지에는 currentPage라는 매개변수가 넘어와야 하는데
     // 매개변수가 안 넘어오는 경우 currentPage를 1이 대입된다.
@@ -38,6 +52,7 @@
         }
 %>
     <div>전체행의 수 : <%=totalRowCount%></div>
+    <br>
 <%    
     int pagePerRow = 10; // 페이지당 보여줄 글의 목록을 10개로 설정
     String listSql = "SELECT board_no, board_title, board_user, board_date FROM board ORDER BY board_no DESC LIMIT ?, ?";
@@ -46,7 +61,7 @@
     listStatement.setInt(2, pagePerRow); 
     listResultSet = listStatement.executeQuery();
 %>
-    <table border="1">
+    <table border="1" class = "table">
         <thead>
             <tr>
                 <th>boardTitle</th>
@@ -68,9 +83,10 @@
 %>
         </tbody>
     </table>
+     
     <div>
-        <a href="<%=request.getContextPath()%>/jsp_board/boardAddForm.jsp">게시글 입력</a>
-    </div>
+        <a class="btn btn-outline-secondary btn-sm" href="<%=request.getContextPath()%>/jsp_board/boardAddForm.jsp">게시글 입력</a>
+    </div> <br>
 <%
     // 마지막 페이지는 전체글의수를 pagePerRow로 나누었을때 나누어 떨어지면 몫이 마지막 페이지 
     // ex) 전체글이 50개 / 10개씩 -> 마지막 페이지는 5페이지
@@ -85,16 +101,17 @@
 <%
         if(currentPage>1) { // 현재 페이지가 1페이지보다 크면 이전페이지 링크를 추가
 %>
-            <a href="<%=request.getContextPath()%>/jsp_board/boardList.jsp?currentPage=<%=currentPage-1%>">이전</a>
+            <a class="btn btn-outline-secondary btn-sm" href="<%=request.getContextPath()%>/jsp_board/boardList.jsp?currentPage=<%=currentPage-1%>">이전</a>
 <%
         }
         if(currentPage < lastPage) { // 현재 페이지가 마지막 페이지보다 작으면 다음페이지 링크를 추가
 %>
-            <a href="<%=request.getContextPath()%>/jsp_board/boardList.jsp?currentPage=<%=currentPage+1%>">다음</a>
+            <a class="btn btn-outline-secondary btn-sm" href="<%=request.getContextPath()%>/jsp_board/boardList.jsp?currentPage=<%=currentPage+1%>">다음</a>
 <%
         }
 %>
     </div>
+    </div>  <!-- table을 감싸는 /div -->  
 <%
     } catch(Exception e) {
         e.printStackTrace();
