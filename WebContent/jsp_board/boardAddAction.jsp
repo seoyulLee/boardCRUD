@@ -27,7 +27,7 @@
     System.out.println("param boardUser:"+boardUser);
     String dbUrl = "jdbc:mysql://127.0.0.1:3306/jjdev?useUnicode=true&characterEncoding=euckr";
     String dbUser = "root";
-    String dbPw = "db¾ÏÈ£";
+    String dbPw = "java0000";
     Connection connection = null;
     PreparedStatement statement = null;
     try {
