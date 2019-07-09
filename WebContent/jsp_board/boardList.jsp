@@ -59,7 +59,7 @@
             while(listResultSet.next()) {
 %>
                 <tr>
-                    <td><a href="<%=request.getContextPath()%>/jsp_board/boardView.jsp?boardNo=<%=listResultSet.getInt("board_no")%>"><%=listResultSet.getString("board_title")%></a></td>
+                    <td><a href="<%=request.getContextPath()%>/jsp_board/boardview.jsp?boardNo=<%=listResultSet.getInt("board_no")%>"><%=listResultSet.getString("board_title")%></a></td>
                     <td><%=listResultSet.getString("board_user")%></td>
                     <td><%=listResultSet.getString("board_date")%></td>
                 </tr>
