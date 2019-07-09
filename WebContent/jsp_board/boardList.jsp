@@ -19,7 +19,7 @@
 <title>BOARD LIST</title>
 </head>
 <body>
-<div class = "container"><!-- tableÀ» °¨½Î´Â div -->
+<div class = "container"><!-- ºÎÆ®½ºÆ®·¦À» À§ÇØ °¨½Î´Â div -->
 <br><br>
 <h2>BOARD LIST</h2>    
 <%
@@ -111,7 +111,7 @@
         }
 %>
     </div>
-    </div>  <!-- tableÀ» °¨½Î´Â /div -->  
+    </div>  <!-- ºÎÆ®½ºÆ®·¦À» À§ÇØ °¨½Î´Â /div -->  
 <%
     } catch(Exception e) {
         e.printStackTrace();
